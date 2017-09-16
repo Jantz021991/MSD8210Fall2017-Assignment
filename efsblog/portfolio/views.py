@@ -109,9 +109,9 @@ def investment_new(request):
            investment = form.save(commit=False)
            investment.created_date = timezone.now()
            investment.save()
-           investment = Investment.objects.filter(purchase_date__lte=timezone.now())
+           investments = Investment.objects.filter(acquired_date__lte=timezone.now())
            return render(request, 'portfolio/investment_list.html',
-                         {'investment': investment})
+                         {'investments': investments})
    else:
        form = InvestmentForm()
        # print("Else")
@@ -128,7 +128,7 @@ def investment_edit(request, pk):
            # stock.customer = stock.id
            investment.updated_date = timezone.now()
            investment.save()
-           investments = Investment.objects.filter(purchase_date__lte=timezone.now())
+           investments = Investment.objects.filter(acquired_data__lte=timezone.now())
            return render(request, 'portfolio/investment_list.html', {'investments': investment})
    else:
        # print("else")
@@ -140,8 +140,9 @@ def investment_edit(request, pk):
 def investment_delete(request, pk):
    investment = get_object_or_404(Investment, pk=pk)
    investment.delete()
-   investment = Investment.objects.filter(purchase_date__lte=timezone.now())
-   return render(request, 'portfolio/investment_list.html', {'investment': investment})
+   investments = Investment.objects.filter(acquired_date__lte=timezone.now())
+   return render(request, 'portfolio/investment_list.html', {'investments': investments})
+
 
 @login_required
 def portfolio(request,pk):
@@ -150,8 +151,6 @@ def portfolio(request,pk):
    investments =Investment.objects.filter(customer=pk)
    stocks = Stock.objects.filter(customer=pk)
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
-
-
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
                                                       'sum_acquired_value': sum_acquired_value,})

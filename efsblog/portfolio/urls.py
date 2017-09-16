@@ -14,7 +14,8 @@ urlpatterns = [
     url(r'^stock/create/$', views.stock_new, name='stock_new'),
     url(r'^investment/$', views.investment_list, name='investment_list'),
     url(r'^investment/(?P<pk>\d+)/delete/$', views.investment_delete, name='investment_delete'),
-    url(r'^investment/(?P<pk>\d+)/edit/$', views.customer_edit, name='investment_edit'),
-    url(r'^investment/create/$', views.stock_new, name='investment_new'),
+    url(r'^investment/(?P<pk>\d+)/edit/$', views.investment_edit, name='investment_edit'),
+    url(r'^investment/create/$', views.investment_new, name='investment_new'),
+    url(r'^accounts/profile/$', views.home, name='home'),
 
    ]
