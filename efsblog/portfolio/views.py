@@ -7,7 +7,6 @@ from .forms import *
 from django.db.models import Sum
 
 
-
 def home(request):
    return render(request, 'portfolio/home.html',
                  {'portfolio': home})
@@ -154,3 +153,4 @@ def portfolio(request,pk):
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
                                                       'sum_acquired_value': sum_acquired_value,})
+

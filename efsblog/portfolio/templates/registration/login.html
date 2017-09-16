@@ -1,26 +1,33 @@
 {% extends "portfolio/base.html" %}
 
+{% load staticfiles %}
+
+
 {% block content %}
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
+    {#<p> <img src="http://media.superpages.com/media/photos/9e2d/b48b/040e/759d/c84e/d784/b900/56c8/image/9e2db48b040e759dc84ed784b90056c8.jpeg" style="padding: 10px 800px 10px 200px"/> </p>  #}
+    <p><img src="{% static "images/eaglefinanceserices.jpeg" %}" style="padding: 10px 800px 10px 200px"/></p>
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <br>
-        <br>
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <br>
+            <br>
+            <table align="center">
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>
+            <p style = "padding: 10px 400px 800px 300px">
+                 <input type="submit" value="login"/>
+                <input type="hidden" name="next" value="{{ next }}"/>
+            </p>
+        </form>
 
-        <input type="submit" value="login"/>
-        <input type="hidden" name="next" value="{{ next }}"/>
-    </form>
 {% endblock %}

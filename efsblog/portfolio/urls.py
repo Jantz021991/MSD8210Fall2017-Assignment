@@ -17,5 +17,8 @@ urlpatterns = [
     url(r'^investment/(?P<pk>\d+)/edit/$', views.investment_edit, name='investment_edit'),
     url(r'^investment/create/$', views.investment_new, name='investment_new'),
     url(r'^accounts/profile/$', views.home, name='home'),
-
-   ]
+   # url(r'^admin/', include(admin.site.urls)),
+    # url(r'^account/reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(),name='reset_password_confirm'),
+    # PS: url above is going to used for next section of implementation.
+  #  url(r'^account/reset_password', ResetPasswordRequestView.as_view(), name="reset_password"),
+]

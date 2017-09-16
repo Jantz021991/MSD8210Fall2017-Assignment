@@ -38,7 +38,15 @@
         <thead>
         <tr class="bg-info">
 
-            <th>Cust ID</th>
+            <th>Customer</th>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Initial Stock Price</th>
+            <th>Initial Stock Value</th>
+            <th>Current Stock Price</th>
+            <th>Current Stock Value</th>
+            <th>Results</th>
 
         </tr>
         </thead>
@@ -46,8 +54,10 @@
         {% for stock in stocks %}
             <tr>
                 <td>{{ stock.customer }}</td>
-
-
+                <td>{{ stock.symbol }}</td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock.shares}}</td>
+                <td>{{ stock.purchase_price  }}</td>
             </tr>
         {% endfor %}
         </tbody>
