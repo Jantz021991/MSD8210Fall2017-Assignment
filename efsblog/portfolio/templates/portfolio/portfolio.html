@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load mathfilters %}
+
 <!DOCTYPE html>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -58,6 +59,8 @@
                 <td>{{ stock.name }}</td>
                 <td>{{ stock.shares}}</td>
                 <td>{{ stock.purchase_price  }}</td>
+                <td>{{ stock.purchase_price|mul:stock.shares }}</td>
+                <td>{{ inves }}</td>
             </tr>
         {% endfor %}
         </tbody>

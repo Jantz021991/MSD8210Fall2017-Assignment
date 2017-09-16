@@ -5,7 +5,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.db.models import Sum
-
+from yahoo_finance import Share
+import json
 
 def home(request):
    return render(request, 'portfolio/home.html',
