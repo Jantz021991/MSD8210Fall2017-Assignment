@@ -171,10 +171,11 @@ def portfolio(request,pk):
    stocks = Stock.objects.filter(customer=pk)
    sum_purchase_value = Stock.objects.filter(customer=pk).aggregate(total=(Sum(F('purchase_price')*F('shares'))))['total']
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
-
+   sum_recent_value = Investment.objects.filter(customer=pk).aggregate(Sum('recent_value'))
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
                                                       'sum_acquired_value': sum_acquired_value,
                                                        'sum_purchase_value': sum_purchase_value,
+                                                       'sum_recent_value':sum_recent_value,
                                                        })
 
