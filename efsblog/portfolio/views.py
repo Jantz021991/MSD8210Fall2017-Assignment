@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-from django.db.models import Sum
+from django.db.models import Sum ,F
 from django.views.generic.base import TemplateView
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail, BadHeaderError
@@ -169,8 +169,12 @@ def portfolio(request,pk):
    customers = Customer.objects.filter(created_date__lte=timezone.now())
    investments =Investment.objects.filter(customer=pk)
    stocks = Stock.objects.filter(customer=pk)
+   sum_purchase_value = Stock.objects.filter(customer=pk).aggregate(total=(Sum(F('purchase_price')*F('shares'))))['total']
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
+
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
-                                                      'sum_acquired_value': sum_acquired_value,})
+                                                      'sum_acquired_value': sum_acquired_value,
+                                                       'sum_purchase_value': sum_purchase_value,
+                                                       })
 

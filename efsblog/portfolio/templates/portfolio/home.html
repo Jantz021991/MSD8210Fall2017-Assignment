@@ -15,7 +15,7 @@
                         <div class="links">
                             <!-- Example row of columns -->
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="padding-left: 1%">
                                     <div class="thumbnail">
                                         <img src="{% static "images/customer.jpg" %}" alt="customer"/>
                                         <div class="caption">
@@ -27,10 +27,11 @@
                                             <p><a class="btn btn-primary" href="{% url 'portfolio:customer_list' %}"
                                                   role="button">View
                                                 details &raquo;</a></p>
+                                            <br>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4" >
                                     <div class="thumbnail">
                                         <img src="{% static "images/nonstock.jpg" %}" alt="non-stock"/>
                                         <div class="caption">
@@ -39,10 +40,14 @@
                                             <p><a class="btn btn-primary" href="{% url 'portfolio:investment_list' %}"
                                                   role="button">View
                                                 details &raquo;</a></p>
+                                             <br>
+                                             <br>
                                         </div>
+
                                     </div>
+
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3" style="padding-right: 1%">
                                     <div class="thumbnail">
                                         <img src="{% static "images/stocks.jpg" %}" alt="stocks"/>
                                         <div class="caption">
@@ -53,6 +58,7 @@
                                             <p><a class="btn btn-primary" href="{% url 'portfolio:stock_list' %}"
                                                   role="button">View
                                                 details &raquo;</a></p>
+                                             <br>
                                         </div>
                                     </div>
                                 </div>
