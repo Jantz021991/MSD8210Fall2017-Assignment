@@ -94,9 +94,6 @@
 
 
 {% block content %}
-    {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
     <p> <img src="http://media.superpages.com/media/photos/9e2d/b48b/040e/759d/c84e/d784/b900/56c8/image/9e2db48b040e759dc84ed784b90056c8.jpeg"style="padding-left: 25%"/></p>
     {#  <p><img src="{% static "images/eaglefinanceserices.jpeg" %}" style="align-content: center"/></p>#}
 
@@ -114,10 +111,21 @@
                     <td>{{ form.password }}</td>
                 </tr>
             </table>
+
             <p align="center">
-                 <input type="submit" value="login"/>
+                <input type="submit" value="Login"/>
                 <input type="hidden" name="next" value="{{ next }}"/>
             </p>
         </form>
+            <form method="post" action="{% url 'password_reset' %}">
+                 {% csrf_token %}
+                    <p align="center">
+                        <input type="submit" value="Forgot Password"/>
+                        <input type="hidden" name="password_reset" value="{{ password_reset }}"/>
+                    </p>
+            </form>
+            {% if form.errors %}
+                <p align="center">Your username and password didn't match. Please try again.</p>
+            {% endif %}
 
 {% endblock %}

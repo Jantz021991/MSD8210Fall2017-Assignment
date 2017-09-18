@@ -5,8 +5,10 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.db.models import Sum
-from yahoo_finance import Share
-import json
+from django.views.generic.base import TemplateView
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail, BadHeaderError
+
 
 def home(request):
    return render(request, 'portfolio/home.html',
